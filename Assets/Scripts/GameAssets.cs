@@ -11,6 +11,7 @@ public class GameAssets : MonoBehaviour
 
     private void Awake()
     {
+        // Singleton
         if (Instance != null)
         {
             Debug.LogError("There is more than one Instance");

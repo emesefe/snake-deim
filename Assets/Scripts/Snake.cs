@@ -24,12 +24,19 @@ public class Snake : MonoBehaviour
 
     private void Update()
     {
+        HandleMoveDirection();
+        HandleGridMovement();
+        
+    }
+
+    private void HandleGridMovement()
+    {
         gridMoveTimer += Time.deltaTime;
         if (gridMoveTimer >= gridMoveTimerMax)
         {
             gridPosition += gridMoveDirection;
             gridMoveTimer -= gridMoveTimerMax;
-            
+
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
         }
     }
@@ -42,18 +49,44 @@ public class Snake : MonoBehaviour
         // Cambio dirección hacia arriba
         if (verticalInput > 0) // Si he pulsado hacia arriba (W o Flecha Arriba)
         {
-            if (gridMoveDirection.y != 1) // Si iba en horizontal
+            if (gridMoveDirection.x != 0) // Si iba en horizontal
             {
-                // Cambio la dirección hacia arriba
+                // Cambio la dirección hacia arriba (0,1)
                 gridMoveDirection.x = 0; 
                 gridMoveDirection.y = 1;
             }
         }
         
         // Cambio dirección hacia abajo
-        
+        // Input es abajo?
+        if (verticalInput < 0)
+        {
+            // Mi dirección hasta ahora era horizontal
+            if (gridMoveDirection.x != 0)
+            {
+                gridMoveDirection.x = 0;
+                gridMoveDirection.y = -1;
+            }
+        }
+
         // Cambio dirección hacia derecha
+        if (horizontalInput > 0)
+        {
+            if (gridMoveDirection.y != 0)
+            {
+                gridMoveDirection.x = 1;
+                gridMoveDirection.y = 0;
+            }
+        }
         
         // Cambio dirección hacia izquierda
+        if (horizontalInput < 0)
+        {
+            if (gridMoveDirection.y != 0)
+            {
+                gridMoveDirection.x = -1;
+                gridMoveDirection.y = 0;
+            }
+        }
     }
 }

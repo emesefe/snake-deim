@@ -26,7 +26,6 @@ public class Snake : MonoBehaviour
     {
         HandleMoveDirection();
         HandleGridMovement();
-        
     }
 
     private void HandleGridMovement()
@@ -38,6 +37,7 @@ public class Snake : MonoBehaviour
             gridMoveTimer -= gridMoveTimerMax;
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
+            transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection));
         }
     }
 
@@ -88,5 +88,16 @@ public class Snake : MonoBehaviour
                 gridMoveDirection.y = 0;
             }
         }
+    }
+
+    private float GetAngleFromVector(Vector2Int direction)
+    {
+        float degrees = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        if (degrees < 0)
+        {
+            degrees += 360;
+        }
+
+        return degrees - 90;
     }
 }

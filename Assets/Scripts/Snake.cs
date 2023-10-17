@@ -69,7 +69,7 @@ public class Snake : MonoBehaviour
         this.levelGrid = levelGrid;
     }
 
-    private void HandleGridMovement()
+    private void HandleGridMovement() // Relativo al movimiento en 2D
     {
         gridMoveTimer += Time.deltaTime;
         if (gridMoveTimer >= gridMoveTimerMax)
@@ -85,6 +85,7 @@ public class Snake : MonoBehaviour
             {
                 // El cuerpo crece
                 snakeBodySize++;
+                CreateBodyPart();
             }
 
             if (snakeMovePositionsList.Count > snakeBodySize)
@@ -95,6 +96,7 @@ public class Snake : MonoBehaviour
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection));
+            UpdateBodyParts();
         }
     }
 
@@ -168,5 +170,18 @@ public class Snake : MonoBehaviour
         List<Vector2Int> gridPositionList = new List<Vector2Int>() { gridPosition };
         gridPositionList.AddRange(snakeMovePositionsList);
         return gridPositionList;
+    }
+
+    private void CreateBodyPart()
+    {
+        snakeBodyPartsList.Add(new SnakeBodyPart(snakeBodySize));
+    }
+
+    private void UpdateBodyParts()
+    {
+        for (int i = 0; i < snakeBodyPartsList.Count; i++)
+        {
+            snakeBodyPartsList[i].SetGridPosition(snakeMovePositionsList[i]);
+        }
     }
 }

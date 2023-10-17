@@ -5,6 +5,29 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
+    private class SnakeBodyPart
+    {
+        private Vector2Int gridPosition; // Posición 2D de la SnakeBodyPart
+        private Transform transform;
+
+        public SnakeBodyPart(int bodyIndex)
+        {
+            GameObject snakeBodyPartGameObject = new GameObject("Snake Body",
+                typeof(SpriteRenderer));
+            SpriteRenderer snakeBodyPartSpriteRenderer = snakeBodyPartGameObject.GetComponent<SpriteRenderer>();
+            snakeBodyPartSpriteRenderer.sprite = 
+                GameAssets.Instance.snakeBodySprite;
+            snakeBodyPartSpriteRenderer.sortingOrder = -bodyIndex;
+            transform = snakeBodyPartGameObject.transform;
+        }
+        
+        public void SetGridPosition(Vector2Int gridPosition)
+        {
+            this.gridPosition = gridPosition; // Posición 2D de la SnakeBodyPart
+            transform.position = new Vector3(gridPosition.x, gridPosition.y, 0); // Posición 3D del G.O.
+        }
+    }
+    
     private Vector2Int gridPosition; // Posición 2D de la cabeza
     private Vector2Int startGridPosition;
     private Vector2Int gridMoveDirection;
@@ -18,6 +41,8 @@ public class Snake : MonoBehaviour
 
     private int snakeBodySize; // Cantidad de partes del cuerpo (sin cabeza)
     private List<Vector2Int> snakeMovePositionsList; // Posiciones de cada parte (por orden)
+    private List<SnakeBodyPart> snakeBodyPartsList;
+    
     
     private void Awake()
     {
@@ -29,6 +54,7 @@ public class Snake : MonoBehaviour
 
         snakeBodySize = 0;
         snakeMovePositionsList = new List<Vector2Int>();
+        snakeBodyPartsList = new List<SnakeBodyPart>();
     }
 
     private void Update()

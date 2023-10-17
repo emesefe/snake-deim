@@ -16,8 +16,8 @@ public class Snake : MonoBehaviour
 
     private LevelGrid levelGrid;
 
-    private int snakeBodySize;
-    private List<Vector2Int> snakeMovePositionsList;
+    private int snakeBodySize; // Cantidad de partes del cuerpo (sin cabeza)
+    private List<Vector2Int> snakeMovePositionsList; // Posiciones de cada parte (por orden)
     
     private void Awake()
     {
@@ -53,6 +53,14 @@ public class Snake : MonoBehaviour
             snakeMovePositionsList.Insert(0, gridPosition);
             gridPosition += gridMoveDirection;
 
+            // ¿He comido comida?
+            bool snakeAteFood = levelGrid.TrySnakeEatFood(gridPosition);
+            if (snakeAteFood)
+            {
+                // El cuerpo crece
+                snakeBodySize++;
+            }
+
             if (snakeMovePositionsList.Count > snakeBodySize)
             {
                 snakeMovePositionsList.
@@ -62,8 +70,8 @@ public class Snake : MonoBehaviour
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection));
             
-            // ¿He comido comida?
-            levelGrid.SnakeMoved(gridPosition);
+            
+            
         }
     }
 

@@ -457,6 +457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snakeHeadSprite: {fileID: 21300000, guid: cb0dda71d17e14a5397dd937d9b48cf9, type: 3}
   foodSprite: {fileID: 21300000, guid: fab1cffb3db1d41cc82e8300b33e7777, type: 3}
+  snakeBodySprite: {fileID: 21300000, guid: 3f7bca037e73b403abcaf55f02ca25f9, type: 3}
 --- !u!4 &2085311336
 Transform:
   m_ObjectHideFlags: 0

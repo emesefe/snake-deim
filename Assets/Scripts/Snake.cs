@@ -138,6 +138,7 @@ public class Snake : MonoBehaviour
         
     }
     
+    # region VARIABLES
     private Vector2Int gridPosition; // Posición 2D de la cabeza
     private Vector2Int startGridPosition;
     private Direction gridMoveDirection; // Dirección de la cabeza
@@ -152,6 +153,8 @@ public class Snake : MonoBehaviour
     private int snakeBodySize; // Cantidad de partes del cuerpo (sin cabeza)
     private List<SnakeMovePosition> snakeMovePositionsList; // Posiciones y direcciones de cada parte (por orden)
     private List<SnakeBodyPart> snakeBodyPartsList;
+    
+    #endregion
     
     private void Awake()
     {
@@ -194,6 +197,7 @@ public class Snake : MonoBehaviour
             SnakeMovePosition snakeMovePosition = new SnakeMovePosition(previousSnakeMovePosition, gridPosition, gridMoveDirection);
             snakeMovePositionsList.Insert(0, snakeMovePosition);
 
+            // Relación entre enum Direction y vectores left, right, down y up
             Vector2Int gridMoveDirectionVector;
             switch (gridMoveDirection)
             {
@@ -211,6 +215,7 @@ public class Snake : MonoBehaviour
                     gridMoveDirectionVector = new Vector2Int(0, 1);
                     break;
             }
+            
             gridPosition += gridMoveDirectionVector; // Mueve la posición 2D de la cabeza de la serpiente
 
             // ¿He comido comida?
@@ -226,6 +231,14 @@ public class Snake : MonoBehaviour
             {
                 snakeMovePositionsList.
                     RemoveAt(snakeMovePositionsList.Count - 1);
+            }
+            
+            foreach (SnakeMovePosition movePosition in snakeMovePositionsList)
+            {
+                if (gridMoveDirectionVector == movePosition.GetGridPosition())
+                {
+                    // GAME OVER
+                }
             }
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);

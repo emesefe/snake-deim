@@ -235,7 +235,8 @@ public class Snake : MonoBehaviour
             }
             
             gridPosition += gridMoveDirectionVector; // Mueve la posición 2D de la cabeza de la serpiente
-
+            gridPosition = levelGrid.ValidateGridPosition(gridPosition);
+            
             // ¿He comido comida?
             bool snakeAteFood = levelGrid.TrySnakeEatFood(gridPosition);
             if (snakeAteFood)

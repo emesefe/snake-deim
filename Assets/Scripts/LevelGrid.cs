@@ -70,12 +70,18 @@ public class LevelGrid
         {
             gridPosition.x = -w;
         }
-        
-        // Me salgo por la izquierda
-        
-        // Me salgo por la arriba
-        
-        // Me salgo por la abajo
+        if (gridPosition.x < -w)
+        {
+            gridPosition.x = w;
+        }
+        if (gridPosition.y > h)
+        {
+            gridPosition.y = -h;
+        }
+        if (gridPosition.y < -h)
+        {
+            gridPosition.y = h;
+        }
 
         return gridPosition;
     }

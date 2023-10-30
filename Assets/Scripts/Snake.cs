@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
@@ -11,6 +12,12 @@ public class Snake : MonoBehaviour
         Right,
         Down,
         Up
+    }
+
+    private enum State
+    {
+        Alive,
+        Dead
     }
     
     private class SnakeBodyPart
@@ -153,6 +160,8 @@ public class Snake : MonoBehaviour
     private int snakeBodySize; // Cantidad de partes del cuerpo (sin cabeza)
     private List<SnakeMovePosition> snakeMovePositionsList; // Posiciones y direcciones de cada parte (por orden)
     private List<SnakeBodyPart> snakeBodyPartsList;
+
+    private State state;
     
     #endregion
     
@@ -167,12 +176,21 @@ public class Snake : MonoBehaviour
         snakeBodySize = 0;
         snakeMovePositionsList = new List<SnakeMovePosition>();
         snakeBodyPartsList = new List<SnakeBodyPart>();
+
+        state = State.Alive;
     }
 
     private void Update()
     {
-        HandleMoveDirection();
-        HandleGridMovement();
+        switch (state)
+        {
+            case State.Alive:
+                HandleMoveDirection();
+                HandleGridMovement();
+                break;
+            case State.Dead:
+                break;
+        }
     }
 
     public void Setup(LevelGrid levelGrid)
@@ -233,11 +251,13 @@ public class Snake : MonoBehaviour
                     RemoveAt(snakeMovePositionsList.Count - 1);
             }
             
+            // Comprobamos el Game Over aquí porque tenemos la posición de la cabeza y la lista snakeMovePositionsList actualizadas para poder comprobar la muerte
             foreach (SnakeMovePosition movePosition in snakeMovePositionsList)
             {
-                if (gridMoveDirectionVector == movePosition.GetGridPosition())
+                if (gridPosition == movePosition.GetGridPosition()) // Posición de la cabeza coincide con alguna parte del cuerpo
                 {
                     // GAME OVER
+                    state = State.Dead;
                 }
             }
 

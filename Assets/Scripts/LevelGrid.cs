@@ -59,4 +59,29 @@ public class LevelGrid
         foodSpriteRenderer.sprite = GameAssets.Instance.foodSprite;
         foodGameObject.transform.position = new Vector3(foodGridPosition.x, foodGridPosition.y, 0);
     }
+
+    public Vector2Int ValidateGridPosition(Vector2Int gridPosition)
+    {
+        int w = Half(width);
+        int h = Half(height);
+        
+        // Me salgo por la derecha
+        if (gridPosition.x > w)
+        {
+            gridPosition.x = -w;
+        }
+        
+        // Me salgo por la izquierda
+        
+        // Me salgo por la arriba
+        
+        // Me salgo por la abajo
+
+        return gridPosition;
+    }
+
+    private int Half(int number)
+    {
+        return number / 2;
+    }
 }

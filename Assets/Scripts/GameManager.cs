@@ -5,8 +5,25 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
+    public const int POINTS = 100; // Cantidad de puntos que ganamos al comer comida
+
+    private int score; // Puntuación del jugador
+    
     private LevelGrid levelGrid;
     private Snake snake;
+    
+    private void Awake()
+    {
+        // Singleton
+        if (Instance != null)
+        {
+            Debug.LogError("There is more than one Instance");
+        }
+
+        Instance = this;
+    }
     
     private void Start()
     {
@@ -20,5 +37,15 @@ public class GameManager : MonoBehaviour
         levelGrid = new LevelGrid(20, 20);
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void AddScore(int pointsToAdd)
+    {
+        score += pointsToAdd;
     }
 }

@@ -30,6 +30,8 @@ public class LevelGrid
         {
             Object.Destroy(foodGameObject);
             SpawnFood();
+            GameManager.Instance.AddScore(GameManager.POINTS);
+            Debug.Log(GameManager.Instance.GetScore());
             return true;
         }
         else

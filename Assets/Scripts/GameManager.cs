@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     
     private LevelGrid levelGrid;
     private Snake snake;
+
+    private ScoreUI scoreUIScript;
     
     private void Awake()
     {
@@ -37,6 +39,10 @@ public class GameManager : MonoBehaviour
         levelGrid = new LevelGrid(20, 20);
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);
+
+        scoreUIScript = GetComponentInChildren<ScoreUI>();
+        score = 0;
+        AddScore(0);
     }
 
     public int GetScore()
@@ -47,5 +53,6 @@ public class GameManager : MonoBehaviour
     public void AddScore(int pointsToAdd)
     {
         score += pointsToAdd;
+        scoreUIScript.UpdateScoreText(score);
     }
 }

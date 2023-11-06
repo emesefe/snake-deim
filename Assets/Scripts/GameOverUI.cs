@@ -19,6 +19,8 @@ public class GameOverUI : MonoBehaviour
         
         restartButton.onClick.AddListener(() => {Loader.Load(Loader.Scene.Game);});
         //restartButton.onClick.AddListener(RestartButtonFunction);
+
+        Hide();
     }
 
     public void Show()

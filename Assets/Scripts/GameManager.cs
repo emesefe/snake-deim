@@ -60,4 +60,9 @@ public class GameManager : MonoBehaviour
         score += pointsToAdd;
         scoreUIScript.UpdateScoreText(score);
     }
+
+    public void SnakeDied()
+    {
+        GameOverUI.Instance.Show();
+    }
 }

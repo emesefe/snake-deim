@@ -203,6 +203,8 @@ public class Snake : MonoBehaviour
         {
             gridMoveTimer -= gridMoveTimerMax; // Se reinicia el temporizador
             
+            SoundManager.PlaySound();
+            
             SnakeMovePosition previousSnakeMovePosition = null;
             if (snakeMovePositionsList.Count > 0)
             {

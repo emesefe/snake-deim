@@ -8,6 +8,12 @@ public class GameAssets : MonoBehaviour
     public Sprite snakeBodySprite;
     public Sprite foodSprite;
 
+    public AudioClip buttonClickClip;
+    public AudioClip buttonOverClip;
+    public AudioClip snakeDieClip;
+    public AudioClip snakeEatClip;
+    public AudioClip snakeMoveClip;
+
     private void Awake()
     {
         // Singleton

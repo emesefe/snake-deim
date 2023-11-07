@@ -20,9 +20,9 @@ public class MainMenuUI : MonoBehaviour
         howToPlayButton.onClick.AddListener(ShowHowToPlayPanel);
         quitButton.onClick.AddListener(Application.Quit);
         
-        //quitHowToPlayPanelButton.onClick.AddListener(HideHowToPlayPanel);
+        quitHowToPlayPanelButton.onClick.AddListener(HideHowToPlayPanel);
         
-        //HideHowToPlayPanel();
+        HideHowToPlayPanel();
     }
 
     private void ShowHowToPlayPanel()

@@ -20,6 +20,12 @@ public class PauseUI : MonoBehaviour
 
         Instance = this;
         
+        mainMenuButton.onClick.AddListener(() =>
+        {
+            Time.timeScale = 1f;
+            Loader.Load(Loader.Scene.MainMenu);
+        });
+        
         Hide();
     }
 

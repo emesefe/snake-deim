@@ -309,6 +309,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8185832590207404422, guid: 2ac0f789bbc7e4132b0b743d44ef226a, type: 3}
   m_PrefabInstance: {fileID: 382677248}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &382677250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7027826649039449096, guid: 2ac0f789bbc7e4132b0b743d44ef226a, type: 3}
+  m_PrefabInstance: {fileID: 382677248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &391973051
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,6 +919,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8185832590207404422, guid: 2ac0f789bbc7e4132b0b743d44ef226a, type: 3}
   m_PrefabInstance: {fileID: 938280412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &938280414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7027826649039449096, guid: 2ac0f789bbc7e4132b0b743d44ef226a, type: 3}
+  m_PrefabInstance: {fileID: 938280412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1196108859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1980891569}
+  - component: {fileID: 1980891570}
   m_Layer: 0
   m_Name: Pause
   m_TagString: Untagged
@@ -1313,6 +1336,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1980891570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980891568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93926da2077d42ef8c6be7c908c4593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumeButton: {fileID: 382677250}
+  mainMenuButton: {fileID: 938280414}
 --- !u!1 &2006882572
 GameObject:
   m_ObjectHideFlags: 0

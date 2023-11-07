@@ -20,7 +20,10 @@ public class PauseUI : MonoBehaviour
 
         Instance = this;
         
-        
+        resumeButton.onClick.AddListener(() =>
+        {
+            GameManager.Instance.ResumeGame();
+        });
         mainMenuButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1f;

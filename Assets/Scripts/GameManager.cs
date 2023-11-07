@@ -44,9 +44,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     Loader.Load(Loader.Scene.Game);
+        // }
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Loader.Load(Loader.Scene.Game);
+            PauseGame();
         }
     }
 

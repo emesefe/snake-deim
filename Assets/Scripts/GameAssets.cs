@@ -1,18 +1,22 @@
+using System;
 using UnityEngine;
 
 public class GameAssets : MonoBehaviour
 {
+    [Serializable]
+    public class SoundAudioClip
+    {
+        public SoundManager.Sound sound;
+        public AudioClip audioClip;
+    }
+    
     public static GameAssets Instance { get; private set; }
 
     public Sprite snakeHeadSprite;
     public Sprite snakeBodySprite;
     public Sprite foodSprite;
 
-    public AudioClip buttonClickClip;
-    public AudioClip buttonOverClip;
-    public AudioClip snakeDieClip;
-    public AudioClip snakeEatClip;
-    public AudioClip snakeMoveClip;
+    public SoundAudioClip[] soundAudioClipsArray;
 
     private void Awake()
     {

@@ -23,6 +23,8 @@ public class MainMenuUI : MonoBehaviour
         quitHowToPlayPanelButton.onClick.AddListener(HideHowToPlayPanel);
         
         HideHowToPlayPanel();
+        
+        SoundManager.CreateSoundManagerGameObject();
     }
 
     private void ShowHowToPlayPanel()

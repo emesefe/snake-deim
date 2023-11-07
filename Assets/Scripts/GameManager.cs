@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private Snake snake;
 
     private ScoreUI scoreUIScript;
+
+    private bool isPaused;
     
     private void Awake()
     {
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
         scoreUIScript = GetComponentInChildren<ScoreUI>();
         score = 0;
         AddScore(0);
+
+        isPaused = false;
     }
 
     private void Update()
@@ -50,7 +54,16 @@ public class GameManager : MonoBehaviour
         // }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseGame();
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+
+            isPaused = !isPaused;
         }
     }
 

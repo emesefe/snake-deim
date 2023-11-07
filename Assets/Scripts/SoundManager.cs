@@ -13,11 +13,11 @@ public static class SoundManager
         SnakeMove
     }
     
-    public static void PlaySound()
+    public static void PlaySound(Sound sound)
     {
-        GameObject soundGameObject = new GameObject("Sound Manager");
+        GameObject soundGameObject = new GameObject("Sound " + sound);
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        //audioSource.PlayOneShot(GameAssets.Instance.snakeMoveClip);
+        audioSource.PlayOneShot(GetAudioClipFromSound(sound));
     }
 
     private static AudioClip GetAudioClipFromSound(Sound sound)

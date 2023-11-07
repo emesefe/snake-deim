@@ -20,6 +20,7 @@ public class PauseUI : MonoBehaviour
 
         Instance = this;
         
+        
         mainMenuButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1f;

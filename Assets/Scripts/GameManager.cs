@@ -65,4 +65,16 @@ public class GameManager : MonoBehaviour
     {
         GameOverUI.Instance.Show();
     }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        PauseUI.Instance.Show();
+    }
+    
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        PauseUI.Instance.Hide();
+    }
 }

@@ -1,12 +1,15 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverUI : MonoBehaviour
+public class PauseUI : MonoBehaviour
 {
-    // Singleton
-    public static GameOverUI Instance { get; private set; }
-    
-    [SerializeField] private Button restartButton;
+    public static PauseUI Instance { get; private set; }
+
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private Button mainMenuButton;
 
     private void Awake()
     {
@@ -17,8 +20,6 @@ public class GameOverUI : MonoBehaviour
 
         Instance = this;
         
-        restartButton.onClick.AddListener(() => {Loader.Load(Loader.Scene.Game);});
-
         Hide();
     }
 

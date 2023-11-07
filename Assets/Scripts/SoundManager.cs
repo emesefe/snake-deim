@@ -19,4 +19,17 @@ public static class SoundManager
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         //audioSource.PlayOneShot(GameAssets.Instance.snakeMoveClip);
     }
+
+    private static AudioClip GetAudioClipFromSound(Sound sound)
+    {
+        foreach (GameAssets.SoundAudioClip soundAudioClip in GameAssets.Instance.soundAudioClipsArray)
+        {
+            if (soundAudioClip.sound == sound)
+            {
+                return soundAudioClip.audioClip;
+            }
+        }
+        Debug.LogError("Sound " + sound + " not found");
+        return null;
+    }
 }

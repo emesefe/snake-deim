@@ -22,6 +22,11 @@ public class ScoreUI : MonoBehaviour
         Score.OnHighScoreChange += Score_OnHighScoreChange;
     }
 
+    private void OnDisable()
+    {
+        Score.OnHighScoreChange -= Score_OnHighScoreChange;
+    }
+
     private void Score_OnHighScoreChange(object sender, EventArgs e)
     {
         UpdateHighScoreText();

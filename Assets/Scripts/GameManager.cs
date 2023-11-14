@@ -4,14 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public const int POINTS = 100; // Cantidad de puntos que ganamos al comer comida
-
-    private int score; // Puntuación del jugador
-    
     private LevelGrid levelGrid;
     private Snake snake;
 
-    private ScoreUI scoreUIScript;
+    private ScoreUI scoreUIScript; // PENDIENTE
 
     private bool isPaused;
     
@@ -42,9 +38,8 @@ public class GameManager : MonoBehaviour
         levelGrid.Setup(snake);
 
         // Inicializo tema score
-        scoreUIScript = GetComponentInChildren<ScoreUI>();
-        score = 0;
-        AddScore(0);
+        Score.InitializeStaticScore();
+        scoreUIScript = GetComponentInChildren<ScoreUI>(); // PENDIENTE
 
         isPaused = false;
     }

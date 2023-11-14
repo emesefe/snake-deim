@@ -31,8 +31,7 @@ public static class Score
     public static void InitializeStaticScore()
     {
         score = 0;
-        AddScore(0);
-        
+        AddScore(0); // PENDIENTE
     }
     
     public static int GetScore()

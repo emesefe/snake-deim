@@ -31,7 +31,7 @@ public static class Score
     public static void InitializeStaticScore()
     {
         score = 0;
-        AddScore(0); // PENDIENTE
+        AddScore(0);
     }
     
     public static int GetScore()
@@ -42,6 +42,6 @@ public static class Score
     public static void AddScore(int pointsToAdd)
     {
         score += pointsToAdd;
-        // scoreUIScript.UpdateScoreText(score);
+        ScoreUI.Instance.UpdateScoreText(score);
     }
 }

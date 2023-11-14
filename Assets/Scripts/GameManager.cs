@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
 
     private LevelGrid levelGrid;
     private Snake snake;
-    
-    private static ScoreUI scoreUIScript; // PENDIENTE
 
     private bool isPaused;
     
@@ -39,7 +37,6 @@ public class GameManager : MonoBehaviour
 
         // Inicializo tema score
         Score.InitializeStaticScore();
-        scoreUIScript = GetComponentInChildren<ScoreUI>();
 
         isPaused = false;
     }

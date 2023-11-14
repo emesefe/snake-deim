@@ -6,7 +6,7 @@ public static class Score
 {
     public const string HIGH_SCORE = "highScore"; // Clave en PlayerPrefs
     public const int POINTS = 100; // Cantidad de puntos que ganamos al comer comida
-    
+
     private static int score; // Puntuación del jugador
 
     public static int GetHighScore()
@@ -32,5 +32,17 @@ public static class Score
     {
         score = 0;
         AddScore(0);
+        
+    }
+    
+    public static int GetScore()
+    {
+        return score;
+    }
+    
+    public static void AddScore(int pointsToAdd)
+    {
+        score += pointsToAdd;
+        // scoreUIScript.UpdateScoreText(score);
     }
 }

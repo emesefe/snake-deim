@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
 
     private LevelGrid levelGrid;
     private Snake snake;
-
-    private ScoreUI scoreUIScript; // PENDIENTE
+    
+    private static ScoreUI scoreUIScript; // PENDIENTE
 
     private bool isPaused;
     
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         // Inicializo tema score
         Score.InitializeStaticScore();
-        scoreUIScript = GetComponentInChildren<ScoreUI>(); // PENDIENTE
+        scoreUIScript = GetComponentInChildren<ScoreUI>();
 
         isPaused = false;
     }
@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
         // {
         //     Loader.Load(Loader.Scene.Game);
         // }
+        
+        // Lógica de Pause con tecla Escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -61,17 +63,6 @@ public class GameManager : MonoBehaviour
                 PauseGame();
             }
         }
-    }
-
-    public int GetScore()
-    {
-        return score;
-    }
-
-    public void AddScore(int pointsToAdd)
-    {
-        score += pointsToAdd;
-        scoreUIScript.UpdateScoreText(score);
     }
 
     public void SnakeDied()

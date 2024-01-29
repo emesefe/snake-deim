@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    private enum Direction
+    public enum Direction
     {
         Left,
         Right,
@@ -106,40 +106,6 @@ public class Snake : MonoBehaviour
 
             transform.eulerAngles = new Vector3(0, 0, angle);
         }
-    }
-    
-    private class SnakeMovePosition
-    {
-        private SnakeMovePosition previousSnakeMovePosition;
-        private Vector2Int gridPosition;
-        private Direction direction;
-
-        public SnakeMovePosition(SnakeMovePosition previousSnakeMovePosition, Vector2Int gridPosition, Direction direction)
-        {
-            this.previousSnakeMovePosition = previousSnakeMovePosition;
-            this.gridPosition = gridPosition;
-            this.direction = direction;
-        }
-
-        public Vector2Int GetGridPosition()
-        {
-            return gridPosition;
-        }
-
-        public Direction GetDirection()
-        {
-            return direction;
-        }
-
-        public Direction GetPreviousDirection()
-        {
-            if (previousSnakeMovePosition == null)
-            {
-                return Direction.Right;
-            }
-            return previousSnakeMovePosition.GetDirection();
-        }
-        
     }
     
     # region VARIABLES

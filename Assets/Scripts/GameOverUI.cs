@@ -2,6 +2,26 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
+
+
+
+public abstract class Vehicle
+{
+    public string name;
+}
+
+public class Car : Vehicle
+{
+    public string model;
+}
+
+public class Bike : Vehicle
+{
+    public int power;
+}
+
+
 public class GameOverUI : MonoBehaviour
 {
     // Singleton
@@ -15,6 +35,12 @@ public class GameOverUI : MonoBehaviour
 
     private void Awake()
     {
+
+
+        Vehicle v = new Car();
+
+        
+        
         if (Instance != null)
         {
             Debug.LogError("More than one Instance");
@@ -42,7 +68,7 @@ public class GameOverUI : MonoBehaviour
     {
         scoreText.text = Score.GetScore().ToString();
         highScoreText.text = Score.GetHighScore().ToString();
-        messsageText.text = hasNewHighScore ? "CONGRATULATIONS" : "DON'T WORRY, NEXT TIME";
+        messsageText.text = hasNewHighScore ? "CONGRATULATIONS!" : "DON'T WORRY, NEXT TIME";
 
         // if (hasNewHighScore)
         // {
